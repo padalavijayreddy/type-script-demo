@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
+import { RouteComponentProps, withRouter } from 'react-router-dom'
 
+import { SAMPLE_ROUTE_PATH } from '../../constants/NavigationConstants'
 import LoadingWrapperWithFailure from '../../components/common/LoadingWrapperWithFailure'
 
 import TodoList from '../../components/TodoList'
@@ -9,8 +11,9 @@ import TodoFooter from '../../components/TodoFooter'
 import TodoStore from '../../stores/TodoStore'
 
 import { TodosWrapper, RefDemoButton } from './styledComponents'
+import { API_SUCCESS } from '@ib/api-constants'
 
-interface TodosRouteProps {}
+interface TodosRouteProps extends RouteComponentProps {}
 
 interface InjectedProps extends TodosRouteProps {
   todoStore: TodoStore
@@ -37,7 +40,11 @@ class TodosRoute extends Component<TodosRouteProps> {
   }
 
   getTodos = () => {
-    this.getTodoStore().getTodoList()
+    const todoStore = this.getTodoStore()
+    const { getTodoListAPIStatus } = todoStore
+    if (getTodoListAPIStatus !== API_SUCCESS) {
+      this.getTodoStore().getTodoList()
+    }
   }
 
   onAddTodo = (todoInput: string) => {
@@ -49,6 +56,8 @@ class TodosRoute extends Component<TodosRouteProps> {
     if (userInput) {
       this.onAddTodo(userInput)
     }
+    const { history } = this.props
+    history.push(SAMPLE_ROUTE_PATH)
   }
 
   renderSuccessUI = observer(() => {
@@ -82,4 +91,4 @@ class TodosRoute extends Component<TodosRouteProps> {
   }
 }
 
-export default TodosRoute
+export default withRouter(TodosRoute)
