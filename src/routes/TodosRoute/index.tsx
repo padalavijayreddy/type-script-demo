@@ -6,7 +6,6 @@ import LoadingWrapperWithFailure from '../../components/common/LoadingWrapperWit
 import TodoList from '../../components/TodoList'
 import UserInput from '../../components/UserInput'
 import TodoFooter from '../../components/TodoFooter'
-
 import TodoStore from '../../stores/TodoStore'
 
 import { TodosWrapper, RefDemoButton } from './styledComponents'
