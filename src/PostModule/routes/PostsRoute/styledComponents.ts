@@ -9,6 +9,12 @@ export const PostWrapper = styled.div`
   flex: 1;
   margin-top: 100px;
 `
+export const ButtonWrapper = styled.div`
+  display: flex;
+`
+export const LanguageButton = styled.button`
+  display: flex;
+`
 
 export const AddRefButton = styled.button`
   ${tw`bg-blue-500 rounded p-2 ml-2 text-white`}

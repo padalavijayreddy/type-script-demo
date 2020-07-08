@@ -1,0 +1,11 @@
+{
+  "useCases": {
+    "normal": "Normal",
+    "plural": "Plural",
+    "parametrized": "Parametrized"
+  },
+  "postDetails": "Complete Post Details",
+  "postWrapper": "Posts Can be Wrapped Here",
+  "PostMatters": "Black Lives Matters",
+  "postIndia": "India is my Country"
+}

@@ -13,7 +13,9 @@ import TodoStore from '../../stores/TodoStore'
 import { TodosWrapper, RefDemoButton } from './styledComponents'
 import { API_SUCCESS } from '@ib/api-constants'
 
-interface TodosRouteProps extends RouteComponentProps {}
+import { withTranslation, WithTranslation } from 'react-i18next'
+
+interface TodosRouteProps extends RouteComponentProps, WithTranslation {}
 
 interface InjectedProps extends TodosRouteProps {
   todoStore: TodoStore
@@ -61,16 +63,17 @@ class TodosRoute extends Component<TodosRouteProps> {
   }
 
   renderSuccessUI = observer(() => {
+    const { t } = this.props
     const { todos, todosLeftCount } = this.getTodoStore()
     return (
       <TodosWrapper>
         <RefDemoButton onClick={this.getCurrentTodo}>
-          Add current todo
+          {t('todos:addCurrentTodo')}
         </RefDemoButton>
         <UserInput
           ref={this.todoInputRef}
           onAddInput={this.onAddTodo}
-          buttonText='Add Todo'
+          buttonText={t('todos:addTodo')}
         />
         <TodoList todos={todos} />
         <TodoFooter todosLeftCount={todosLeftCount} />
@@ -91,4 +94,4 @@ class TodosRoute extends Component<TodosRouteProps> {
   }
 }
 
-export default withRouter(TodosRoute)
+export default withTranslation('', {})(withRouter(TodosRoute))
