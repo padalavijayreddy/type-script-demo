@@ -35,7 +35,7 @@ class AnimationRoute extends Component {
             </Card>
           </Board>
         </div>
-        <div className='m-120'>
+        {/* <div className='m-120'>
           <ItemIcons>
             {this.items.map(eachItem => (
               <Item
@@ -46,7 +46,7 @@ class AnimationRoute extends Component {
             ))}
           </ItemIcons>
           <Target />
-        </div>
+        </div> */}
       </Animation>
     )
   }
